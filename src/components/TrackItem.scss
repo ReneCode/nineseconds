@@ -1,0 +1,16 @@
+.track {
+  display: flex;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  box-sizing: border-box;
+  border: 5px solid transparent;
+  canvas {
+    border: 2px solid #eee;
+    background-color: #eee;
+    &:hover {
+      cursor: cell;
+    }
+  }
+}
