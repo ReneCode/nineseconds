@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import "./RiffList.scss";
+import "./TrackList.scss";
 import { exampleTracks } from "../model/exampleTracks";
 import { TrackType } from "../model/DataTypes";
 import TrackItem from "./TrackItem";
 
-const RiffList = () => {
+const TrackList = () => {
   const [tracks, setTracks] = useState([] as TrackType[]);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const RiffList = () => {
   );
 };
 
-export default RiffList;
+export default TrackList;

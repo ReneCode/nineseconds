@@ -13,11 +13,13 @@ import { TrackType } from "../model/DataTypes";
 // };
 
 // export default createAudioContext
-
-const audioContext = new (window["AudioContext"] ||
-  (window as any)["webkitAudioContext"])();
+let audioContext: AudioContext = (undefined as unknown) as AudioContext;
 
 export const getAudioContext = () => {
+  if (!audioContext) {
+    audioContext = new (window["AudioContext"] ||
+      (window as any)["webkitAudioContext"])();
+  }
   return audioContext;
 };
 
