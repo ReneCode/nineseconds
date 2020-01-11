@@ -30,7 +30,7 @@ class AudioSingleTrack {
     if (!this.audioContext) {
       this.init();
     }
-    const timeScale = 1 / (1 * 128);
+    const timeScale = 1 / (1 * 1000);
     this.track.notes.forEach(note => {
       this.gainNode.gain.setValueAtTime(
         1,

@@ -2,11 +2,13 @@ import React from "react";
 
 import "./TrackInput.scss";
 import TrackTapBoard from "./TrackTapBoard";
+import { TrackType } from "../model/DataTypes";
 
-const TrackInput = () => {
+type Props = { addTrack: (track: TrackType) => void };
+const TrackInput: React.FC<Props> = ({ addTrack }) => {
   return (
     <div className="track-input">
-      <TrackTapBoard />
+      <TrackTapBoard finishTrack={addTrack} />
       <div className="preview">preview</div>
       <div className="track-input__buttons">
         <button className="track-clear">Clear</button>

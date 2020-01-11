@@ -33,14 +33,14 @@ export const exampleTracks: TrackType[] = [
   },
   {
     id: "4",
-    len: 500,
+    len: 5000,
     notes: [
-      { start: 30, len: 10, note: 200 },
-      { start: 50, len: 10, note: 200 },
-      { start: 80, len: 30, note: 300 },
-      { start: 200, len: 30, note: 400 },
-      { start: 260, len: 10, note: 400 },
-      { start: 280, len: 10, note: 400 }
+      { start: 30, len: 100, note: 200 },
+      { start: 500, len: 100, note: 200 },
+      { start: 800, len: 300, note: 300 },
+      { start: 2000, len: 300, note: 400 },
+      { start: 2600, len: 100, note: 400 },
+      { start: 3800, len: 100, note: 400 }
     ]
   }
 ];

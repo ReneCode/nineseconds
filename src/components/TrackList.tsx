@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import "./TrackList.scss";
-import { exampleTracks } from "../model/exampleTracks";
-import { TrackType } from "../model/DataTypes";
 import TrackItem from "./TrackItem";
+import { TrackType } from "../model/DataTypes";
 
-const TrackList = () => {
-  const [tracks, setTracks] = useState([] as TrackType[]);
-
-  useEffect(() => {
-    let all: TrackType[] = [];
-    for (let i = 0; i < 4; i++) {
-      all = all.concat(exampleTracks);
-    }
-    setTracks(all);
-  }, []);
-
+type Props = { tracks: TrackType[] };
+const TrackList: React.FC<Props> = ({ tracks }) => {
   return (
     <div className="scrollable-content">
       rifflist-top
