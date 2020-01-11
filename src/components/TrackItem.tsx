@@ -13,7 +13,7 @@ const TrackDisplay: React.FC<Props> = ({ track }) => {
   const [size, setSize] = useState({ width: 0, height: 0 });
   const canvasEl = useRef(null as any);
   const divEl = useRef(null as any);
-  const [audioTrack] = useState(new AudioSingleTrack(getAudioContext(), track));
+  const [audioTrack] = useState(new AudioSingleTrack(track));
 
   useEffect(() => {
     const canvas: HTMLCanvasElement | null = canvasEl.current;
