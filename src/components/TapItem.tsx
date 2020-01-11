@@ -14,6 +14,12 @@ const TapItem: React.FC<Props> = ({ color, onMouseDown, onMouseUp }) => {
     <div
       style={style}
       className="tapitem"
+      onTouchStart={() => {
+        onMouseDown(color);
+      }}
+      onTouchEnd={() => {
+        onMouseUp(color);
+      }}
       onMouseDown={() => onMouseDown(color)}
       onMouseUp={() => onMouseUp(color)}
     ></div>
