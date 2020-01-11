@@ -11,27 +11,47 @@ type Props = {
 const TrackTapBoard: React.FC<Props> = ({ finishTrack }) => {
   const [recorder] = useState(new TrackRecorder());
 
-  const onMouseDown = (color: string) => {
+  const onMouseDown = (note: number) => {
     if (!recorder.started()) {
       recorder.start(9 * 1000, finishTrack);
     }
-    recorder.on();
+    recorder.on(note);
 
-    console.log(color, "down");
+    console.log(note, "down");
   };
 
-  const onMouseUp = (color: string) => {
-    recorder.off();
+  const onMouseUp = (note: number) => {
+    recorder.off(note);
 
-    console.log(color, "up");
+    console.log(note, "up");
   };
 
   return (
     <div className="tapboard">
-      <TapItem color="green" onMouseDown={onMouseDown} onMouseUp={onMouseUp} />
-      <TapItem color="blue" onMouseDown={onMouseDown} onMouseUp={onMouseUp} />
-      <TapItem color="red" onMouseDown={onMouseDown} onMouseUp={onMouseUp} />
-      <TapItem color="yellow" onMouseDown={onMouseDown} onMouseUp={onMouseUp} />
+      <TapItem
+        color="green"
+        note={0}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+      />
+      <TapItem
+        color="blue"
+        note={1}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+      />
+      <TapItem
+        color="red"
+        note={2}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+      />
+      <TapItem
+        color="yellow"
+        note={3}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+      />
     </div>
   );
 };

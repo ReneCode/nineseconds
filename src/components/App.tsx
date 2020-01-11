@@ -5,9 +5,14 @@ import TrackInput from "./TrackInput";
 
 import { exampleTracks } from "../model/exampleTracks";
 import { TrackType } from "../model/DataTypes";
+import orchester from "../audio/Orchester";
 
 const App: React.FC = () => {
   const [tracks, setTracks] = useState([] as TrackType[]);
+
+  useEffect(() => {
+    orchester.init();
+  }, []);
 
   useEffect(() => {
     let all: TrackType[] = [];

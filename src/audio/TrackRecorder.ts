@@ -3,8 +3,8 @@ import { NoteType, TrackType } from "../model/DataTypes";
 class TrackRecorder {
   startMs: number = 0;
   onMs: number = 0;
+  onNote: number = 0;
   notes: NoteType[] = [];
-  note = 500;
 
   start(maxLenMs: number = 9000, callback: (track: TrackType) => void) {
     this.startMs = Date.now();
@@ -27,20 +27,21 @@ class TrackRecorder {
     return this.startMs !== 0;
   }
 
-  on() {
+  on(note: number) {
+    this.onNote = note;
     this.onMs = Date.now();
   }
 
-  off() {
+  off(note: number) {
     const offMs = Date.now();
     const durationMs = offMs - this.onMs;
     const start = this.onMs - this.startMs;
-    const note: NoteType = {
+    const noteType: NoteType = {
       start: start,
       len: durationMs,
-      note: this.note
+      note: this.onNote
     };
-    this.notes.push(note);
+    this.notes.push(noteType);
   }
 }
 

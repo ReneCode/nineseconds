@@ -4,10 +4,11 @@ import "./TapItem.scss";
 
 type Props = {
   color: string;
-  onMouseDown: (color: string) => void;
-  onMouseUp: (color: string) => void;
+  note: number;
+  onMouseDown: (note: number) => void;
+  onMouseUp: (note: number) => void;
 };
-const TapItem: React.FC<Props> = ({ color, onMouseDown, onMouseUp }) => {
+const TapItem: React.FC<Props> = ({ color, note, onMouseDown, onMouseUp }) => {
   const style = { borderColor: color };
 
   return (
@@ -15,13 +16,13 @@ const TapItem: React.FC<Props> = ({ color, onMouseDown, onMouseUp }) => {
       style={style}
       className="tapitem"
       onTouchStart={() => {
-        onMouseDown(color);
+        onMouseDown(note);
       }}
       onTouchEnd={() => {
-        onMouseUp(color);
+        onMouseUp(note);
       }}
-      onMouseDown={() => onMouseDown(color)}
-      onMouseUp={() => onMouseUp(color)}
+      onMouseDown={() => onMouseDown(note)}
+      onMouseUp={() => onMouseUp(note)}
     ></div>
   );
 };
