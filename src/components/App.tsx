@@ -11,7 +11,11 @@ const App: React.FC = () => {
   const [tracks, setTracks] = useState([] as TrackType[]);
 
   useEffect(() => {
-    orchester.init();
+    // do not create audioContext on Chrome browser
+    // before rendering has finished
+    setTimeout(() => {
+      orchester.init();
+    }, 10);
   }, []);
 
   useEffect(() => {

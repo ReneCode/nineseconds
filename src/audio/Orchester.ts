@@ -38,7 +38,6 @@ class Orchester {
       throw new Error("illegal instrument index");
     }
 
-    console.log("gain:", idx);
     return this.instruments[idx].gainNode;
   }
 }
