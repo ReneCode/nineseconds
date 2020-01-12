@@ -20,8 +20,8 @@ class Orchester {
   audioContext: AudioContext = (undefined as unknown) as AudioContext;
   instruments: Instrument[] = [];
 
-  init() {
-    this.audioContext = getAudioContext();
+  init(audioContext: AudioContext) {
+    this.audioContext = audioContext;
 
     this.instruments.push(new Instrument(this.audioContext, 261.626));
     this.instruments.push(new Instrument(this.audioContext, 293.665));
