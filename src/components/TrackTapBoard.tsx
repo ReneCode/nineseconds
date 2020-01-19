@@ -4,6 +4,7 @@ import "./TrackTapBoard.scss";
 import TapItem from "./TapItem";
 import TrackRecorder from "../audio/TrackRecorder";
 import { TrackType } from "../model/DataTypes";
+import orchester from "../audio/Orchester";
 
 type Props = {
   finishTrack: (track: TrackType) => void;
@@ -11,11 +12,27 @@ type Props = {
 const TrackTapBoard: React.FC<Props> = ({ finishTrack }) => {
   const [recorder] = useState(new TrackRecorder());
 
+  const beepOn = (note: number) => {
+    const gain = orchester.getGainNode(note);
+    const context = orchester.getAudioContext();
+
+    gain.gain.linearRampToValueAtTime(1, context.currentTime);
+  };
+
+  const beepOff = (note: number) => {
+    const gain = orchester.getGainNode(note);
+    const context = orchester.getAudioContext();
+
+    gain.gain.linearRampToValueAtTime(0, context.currentTime);
+  };
+
   const onMouseDown = (note: number) => {
     if (!recorder.started()) {
       recorder.start(9 * 1000, finishTrack);
     }
     recorder.on(note);
+
+    beepOn(note);
 
     console.log(note, "down");
   };
@@ -23,6 +40,7 @@ const TrackTapBoard: React.FC<Props> = ({ finishTrack }) => {
   const onMouseUp = (note: number) => {
     recorder.off(note);
 
+    beepOff(note);
     console.log(note, "up");
   };
 
