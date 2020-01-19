@@ -68,6 +68,7 @@ const TrackDisplay: React.FC<Props> = ({ track }) => {
       ref={divEl}
       onMouseDown={onPlay}
       onTouchStart={onPlay}
+      onClick={onPlay}
     >
       <canvas
         ref={canvasEl}
