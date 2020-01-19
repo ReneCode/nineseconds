@@ -54,7 +54,7 @@ const TrackDisplay: React.FC<Props> = ({ track }) => {
     return `RGB(${(note % 50) * 4},${(note % 100) * 2},${(note % 20) * 12})`;
   };
 
-  const onMouseDown = () => {
+  const onPlay = () => {
     // audioPlayTrack(track);
     // beep.play();
     audioTrack.start();
@@ -69,7 +69,8 @@ const TrackDisplay: React.FC<Props> = ({ track }) => {
         style={style}
         width={size.width}
         height={size.height}
-        onMouseDown={onMouseDown}
+        onMouseDown={onPlay}
+        onTouchStart={onPlay}
       />
     </div>
   );

@@ -6,10 +6,11 @@ import TrackInput from "./TrackInput";
 import { exampleTracks } from "../model/exampleTracks";
 import { TrackType } from "../model/DataTypes";
 import orchester from "../audio/Orchester";
-import { getAudioContext } from "../audio/audioContext";
+import DummyList from "./DummyList";
 
 const App: React.FC = () => {
   const [tracks, setTracks] = useState([] as TrackType[]);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const element = document.getElementById("app");
@@ -24,6 +25,7 @@ const App: React.FC = () => {
       const audioCtx = new AudioContext();
 
       orchester.init(audioCtx);
+      setStarted(true);
     };
 
     element!.addEventListener("click", init);
@@ -46,7 +48,7 @@ const App: React.FC = () => {
   return (
     <div id="app" className="App">
       <div className="header">riffer.eu</div>
-      <TrackList tracks={tracks} />
+      {started ? <TrackList tracks={tracks} /> : <DummyList />}
       <TrackInput addTrack={addTrack} />
     </div>
   );
