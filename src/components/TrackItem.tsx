@@ -63,14 +63,17 @@ const TrackDisplay: React.FC<Props> = ({ track }) => {
   const style: any = {};
 
   return (
-    <div className="track" ref={divEl}>
+    <div
+      className="track"
+      ref={divEl}
+      onMouseDown={onPlay}
+      onTouchStart={onPlay}
+    >
       <canvas
         ref={canvasEl}
         style={style}
         width={size.width}
         height={size.height}
-        onMouseDown={onPlay}
-        onTouchStart={onPlay}
       />
     </div>
   );
